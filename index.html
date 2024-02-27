@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kobe quotes</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<script>
+	const QUOTES = [
+					{
+					author: "Kobe Bryant",
+					quote: "Dedication makes dreams come true."
+					},{
+					author: "Kobe Bryant",
+					quote: "Once you know what failure feels like, determination chases success."
+					},{
+					author: "Kobe Bryant",
+					quote:  "The most important thing is you must put everybody on notice that you’re here and you are for real."
+					},{
+					author: "Kobe Bryant",
+					quote:  "I see the beauty in getting up in the morning and being in pain because I know all the hard work that it took to get to this point. So, I'm not, I'm not sad about [retiring]. I'm very appreciative of what I've had."
+					},{
+					author: "Kobe Bryant",
+					quote:  "After all, greatness is not for everybody."
+					},{
+					author: "Kobe Bryant",
+					quote:  "I can't relate to lazy people. We don't speak the same language. I don't understand you. I don't want to understand you."
+					},{
+					author: "Kobe Bryant",
+					quote: "May you always remember to enjoy the road, especially when it’s a hard one."
+					},{
+					author: "Kobe Bryant",
+					quote:  "We psych ourselves up too much. Like if you try to talk yourself into, ‘Oh, this is a big moment, this is a big shot,’ you’re putting a lot of pressure on yourself. You shot that shot hundreds and thousands of times. Just shoot another one."
+					},{
+					author: "Kobe Bryant",
+					quote:  "I don't want to be the next Michael Jordan, I only want to be Kobe Bryant."
+					},{
+					author: "Kobe Bryant",
+					quote:  "People say bad things about you in the paper on Monday, and then on Wednesday, you're the greatest thing since sliced bread. I've seen that cycle, so why would I be nervous about it happening?"
+					}
+					];
+					
+		function generateRandomIndex(){
+			return	Math.floor(Math.random() * QUOTES.length);
+		}
+		
+		window.onload = init;
+		function init(){
+			generateQuote()
+			}
+		function generateQuote(){
+		const quote = QUOTES[generateRandomIndex()]
+			document.getElementById("text").innerText = quote.quote;
+			document.getElementById("author").innerText = quote.author;
+		
+		
+		const tweetButton = document.getElementById("tweet-quote");
+		try{
+			tweetButton.href = "https://twitter.com/intent/tweet?text="+encodeURIComponent('"' + quote.quote + '" - ' + quote.author)
+		}catch(error){
+			console.error("Error generating tweet URL",error);
+			tweetButton.href = "https://twitter.com/intent/post"
+		}
+		}
+	</script>
+	
+	<style>
+		*{
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		}
+		
+		body{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background-color: #f0f0f0;
+
+		}
+		#quote-box{
+		
+		width: 50%;
+		max-width: 600px;
+		border: 3px solid black;
+		padding: 20px;
+		text-align:center;
+		background-color: white;
+		}
+		
+		#text {
+		font-size:1.2rem;
+		margin-bottom: 10px;
+		}
+		
+		#author {
+		font-style: italic;
+		margin-bottom: 20px;
+		}
+		
+		#new-quote {
+		margin-right: 10px;
+		border: none;
+		background-color: #28a745;
+		color: white;
+		cursor: pointer;
+		text-decoration: none;
+		transition: background-color 0.3s;
+		}
+		
+		#tweet-quote {
+		margin-left: 10px; /* Add margin to the left of the "Tweet Quote" button */
+		}
+		
+		#new-quote:hover {
+		background-color: #218838;
+		transform: scale(1.1);
+		}
+		#tweet-quote:hover {
+		background-color: #0056b3;
+		transform: scale(1.1);
+		}
+	</style>
+</head>
+	<body>
+		<wrapper id="quote-box">
+			<div id="text">
+			</div>
+			<div id="author">
+			</div>
+			<button id="new-quote" onclick="generateQuote();" type="button" class="btn">New Quote</button>
+			<a id="tweet-quote" href="https://twitter.com/intent/tweet" target="_blank" type="button" class="btn btn-primary">Tweet quote</a>
+			
+		</wrapper>
+		<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	</body>
+</html>
